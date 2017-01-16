@@ -2,20 +2,20 @@ package com.Models;
 
 public class Battle {
 
-    private DataHelper dataHelper;
+    private DateHelper dateHelper;
     private StringBuilder battleLog;
 
     public Battle(Squad squad1, Squad squad2) {
-        dataHelper = new DataHelper();
+        dateHelper = new DateHelper();
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(dataHelper.getFormattedStartDate() + "\n\n");
+        stringBuilder.append(dateHelper.getFormattedStartDate() + "\n\n");
         stringBuilder.append(startBattle(squad1, squad2));
         if (squad1.hasAliveWarriors()) {
             stringBuilder.append(("Победил отряд " + squad1.getName()) + "\n\n");
         } else {
             stringBuilder.append(("Победил отряд " + squad2.getName()) + "\n\n");
         }
-        stringBuilder.append(dataHelper.getFormattedDiff() + "\n\n");
+        stringBuilder.append(dateHelper.getFormattedDiff() + "\n\n");
         this.battleLog = stringBuilder;
     }
 
@@ -29,16 +29,16 @@ public class Battle {
             if (!attackedWarrior.isAlive()) {
                 stringBuilder.append(attackedWarrior.toString() + " погиб" + "\n\n");
             }
-            dataHelper.skipTime();
+            dateHelper.skipTime();
             if (squad2.hasAliveWarriors()) {
                 attackedWarrior = squad1.getRandomWarrior();
                 attackingWarrior = squad2.getRandomWarrior();
                 attackedWarrior.takeDamage(attackingWarrior.attack());
-                stringBuilder.append(attackingWarrior.toString() + " атаковал и нанес " + attackingWarrior.attack() + " урона " + attackedWarrior + "\\n");
+                stringBuilder.append(attackingWarrior.toString() + " атаковал и нанес " + attackingWarrior.attack() + " урона " + attackedWarrior + "\n");
                 if (!attackedWarrior.isAlive()) {
                     stringBuilder.append(attackedWarrior.toString() + " погиб" + "\n\n");
                 }
-                dataHelper.skipTime();
+                dateHelper.skipTime();
             }
         }
         return stringBuilder;

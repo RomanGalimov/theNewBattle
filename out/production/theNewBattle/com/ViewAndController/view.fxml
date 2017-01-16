@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="CENTER" hgap="10.0" prefHeight="414.0" prefWidth="512.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.ViewAndController.Controller">
+<GridPane alignment="CENTER" hgap="10.0" prefHeight="414.0" prefWidth="512.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.Controller.Controller">
   <children>
     <TextArea id="BattleLog" fx:id="battleLog" prefWidth="200.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
     <Button fx:id="secondSquadAddButton" mnemonicParsing="false" onAction="#addWarrior" text="Добавить" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
