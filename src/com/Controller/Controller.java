@@ -45,31 +45,33 @@ public class Controller {
     }
     @FXML
     private void startBattle(ActionEvent event) {
-        Warrior[] squad1arr = new Warrior[firstSquad.size()];
-        for (int i = 0; i < squad1arr.length; i++) {
-            firstSquad.get(i).setSquadName(firstSquadName.getText());
-            squad1arr[i] = firstSquad.get(i);
+        if (!firstSquad.isEmpty() || !secondSquad.isEmpty()) {
+            Warrior[] squad1arr = new Warrior[firstSquad.size()];
+            for (int i = 0; i < squad1arr.length; i++) {
+                firstSquad.get(i).setSquadName(firstSquadName.getText());
+                squad1arr[i] = firstSquad.get(i);
+            }
+            Warrior[] squad2arr = new Warrior[secondSquad.size()];
+            for (int i = 0; i < squad2arr.length; i++) {
+                secondSquad.get(i).setSquadName(secondSquadName.getText());
+                squad2arr[i] = secondSquad.get(i);
+            }
+            Squad squad1 = new Squad(firstSquadName.getText(), squad1arr);
+            Squad squad2 = new Squad(secondSquadName.getText(), squad2arr);
+            Battle battle = new Battle(squad1, squad2);
+            battleLog.setText(battle.getBattleLog());
+        } else {
+            battleLog.setText("В каждой команде должен быть как минимум один боец.");
         }
-        Warrior[] squad2arr = new Warrior[secondSquad.size()];
-        for (int i = 0; i < squad2arr.length; i++) {
-            secondSquad.get(i).setSquadName(secondSquadName.getText());
-            squad2arr[i] = secondSquad.get(i);
-        }
-        Squad squad1 = new Squad(firstSquadName.getText(),squad1arr);
-        Squad squad2 = new Squad(secondSquadName.getText(),squad2arr);
-        Battle battle = new Battle(squad1, squad2);
-        battleLog.setText(battle.getBattleLog().toString());
     }
 
     @FXML
     private void clear(ActionEvent event) {
-        firstSquadList.setText(null);
-        secondSquadList.setText(null);
-        firstSquadWarriorName.setText(null);
-        secondSquadWarriorName.setText(null);
+        firstSquadList.setText("");
+        secondSquadList.setText("");
         firstSquad = new LinkedList<>();
         secondSquad = new LinkedList<>();
-        battleLog.setText(null);
+        battleLog.setText("");
     }
 
 }

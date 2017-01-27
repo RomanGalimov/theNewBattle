@@ -1,5 +1,10 @@
 package com.Models;
 
+import com.Models.Warriors.Archer;
+import com.Models.Warriors.Barbarian;
+import com.Models.Warriors.Headhunter;
+import com.Models.Warriors.Mage;
+
 /**
  * Created by GetAnUco on 16.01.2017.
  */
@@ -21,16 +26,16 @@ public class WarriorCreator {
         }
     }
 
-    public static Warrior getArcher(String name) {
+    public static Archer getArcher(String name) {
         return new Archer(name);
     }
-    public static Warrior getBarbarian(String name) {
+    public static Barbarian getBarbarian(String name) {
         return new Barbarian(name);
     }
-    public static Warrior getMage(String name) {
+    public static Mage getMage(String name) {
         return new Mage(name);
     }
-    public static Warrior getHeadhunter(String name) {
+    public static Headhunter getHeadhunter(String name) {
         return new Headhunter(name);
     }
 

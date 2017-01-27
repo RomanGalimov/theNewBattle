@@ -12,14 +12,11 @@ public class Squad implements Cloneable {
     public Squad(String name, Warrior[] warriors) {
         this.name = name;
         this.warriors = warriors;
-        for (int i = 0; i < warriors.length; i++) {
-            warriors[i].setSquadName(name);
-        }
     }
 
     public boolean hasAliveWarriors() {
-        for (int i = 0; i < warriors.length; i++) {
-            if (warriors[i].isAlive()) {
+        for (Warrior warrior: warriors) {
+            if (warrior.isAlive()) {
                 return true;
             }
         }
@@ -47,11 +44,12 @@ public class Squad implements Cloneable {
 
     @Override
     public Squad clone() {
-        try {
-            return (Squad) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new InternalError();
-        }
+            Warrior[] newWarriors = new Warrior[this.warriors.length];
+            for (int i = 0; i < newWarriors.length; i++) {
+                newWarriors[i] = warriors[i].clone();
+            }
+            Squad squad = new Squad(this.name, newWarriors);
+            return squad;
     }
 
 }

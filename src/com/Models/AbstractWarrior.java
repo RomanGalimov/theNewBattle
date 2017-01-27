@@ -1,17 +1,16 @@
 package com.Models;
 
-public class Barbarian implements Warrior, Cloneable {
-    private int health = 120;
-    private int damage = 30;
+import com.Models.Warriors.Archer;
+
+public abstract class AbstractWarrior implements Warrior {
+
+    private int health;
+    private int damage;
     private String name;
     private String squadName;
 
-
-    public Barbarian(String name) {
+    public AbstractWarrior(String name, int health, int damage) {
         this.name = name;
-    }
-
-    private Barbarian (int health, int damage) {
         this.health = health;
         this.damage = damage;
     }
@@ -29,7 +28,12 @@ public class Barbarian implements Warrior, Cloneable {
     }
 
     public boolean isAlive() {
-       return health>0;
+        return health>0;
+    }
+
+    @Override
+    public int getHealth() {
+        return health;
     }
 
     public void setSquadName(String name) {
@@ -38,15 +42,16 @@ public class Barbarian implements Warrior, Cloneable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " " +  name +  " из отряда " + squadName;
+        return getClass().getSimpleName() + " " + name + " из отряда " + squadName;
     }
 
     @Override
-    public Barbarian clone() {
+    public Warrior clone() {
         try {
-            return (Barbarian)super.clone();
+            return (Warrior) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new InternalError();
         }
     }
+
 }
