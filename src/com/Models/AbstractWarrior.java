@@ -1,4 +1,4 @@
-package com.Models;
+package com.Models; //в пакет warriors
 
 import com.Models.Warriors.Archer;
 

@@ -15,7 +15,7 @@ public class Battle {
             stringBuilder.append("Победил отряд ");
             stringBuilder.append(squad1.getName());
             stringBuilder.append("\n\n");
-        } else {
+        } else { //дублирование кода. такие места надо выносить в отдельные методы
             stringBuilder.append("Победил отряд ");
             stringBuilder.append(squad2.getName());
             stringBuilder.append("\n\n");
@@ -33,7 +33,7 @@ public class Battle {
             attackedWarrior.takeDamage(attackingWarrior.attack());
             messageWriter(stringBuilder, attackedWarrior, attackingWarrior);
             dateHelper.skipTime();
-            if (squad2.hasAliveWarriors()) {
+            if (squad2.hasAliveWarriors()) { //дублирование
                 attackedWarrior = squad1.getRandomWarrior();
                 attackingWarrior = squad2.getRandomWarrior();
                 attackedWarrior.takeDamage(attackingWarrior.attack());
